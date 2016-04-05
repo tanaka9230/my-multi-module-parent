@@ -15,6 +15,16 @@
 
     <profiles>
         <profile>
+            <id>nop</id>
+            <properties>
+                <profile-dir>nop</profile-dir>
+                <test-profile-dir>nop</test-profile-dir>
+            </properties>
+            <build>
+                <finalName>${artifactId}-${version}</finalName>
+            </build>
+        </profile>
+        <profile>
             <id>dev</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
