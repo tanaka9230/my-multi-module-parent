@@ -6,5 +6,12 @@ call :mvninstallfile tests JavaTest 0.0 jar
 goto :EOF
 
 :mvninstallfile
-echo [mvn -P nop install:install-file -Dfile=lib\%2-%3.%4 -DgroupId=%1 -DartifactId=%2 -Dversion=%3 -Dpackaging=%4 -DgeneratePom=true]
-call mvn -P nop install:install-file -Dfile=lib\%2-%3.%4 -DgroupId=%1 -DartifactId=%2 -Dversion=%3 -Dpackaging=%4 -DgeneratePom=true
+set LIB_FILE=lib\%2-%3.%4
+set POM_FILE=lib\%2-%3.pom
+if exist "%POM_FILE%" ( 
+    echo [mvn -P nop install:install-file -Dfile=%LIB_FILE% -DgroupId=%1 -DartifactId=%2 -Dversion=%3 -Dpackaging=%4 -DpomFile=%POM_FILE%]
+    call mvn -P nop install:install-file -Dfile=%LIB_FILE% -DgroupId=%1 -DartifactId=%2 -Dversion=%3 -Dpackaging=%4 -DpomFile=%POM_FILE%
+) else (
+    echo [mvn -P nop install:install-file -Dfile=%LIB_FILE% -DgroupId=%1 -DartifactId=%2 -Dversion=%3 -Dpackaging=%4 -DgeneratePom=true]
+    call mvn -P nop install:install-file -Dfile=%LIB_FILE% -DgroupId=%1 -DartifactId=%2 -Dversion=%3 -Dpackaging=%4 -DgeneratePom=true
+)
