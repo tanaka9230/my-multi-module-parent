@@ -16,3 +16,4 @@ if exist "%POM_FILE%" (
     echo [mvn -P nop install:install-file -Dfile=%LIB_FILE% -DgroupId=%1 -DartifactId=%2 -Dversion=%3 -Dpackaging=%4 -DgeneratePom=true]
     call mvn -P nop install:install-file -Dfile=%LIB_FILE% -DgroupId=%1 -DartifactId=%2 -Dversion=%3 -Dpackaging=%4 -DgeneratePom=true
 )
+
