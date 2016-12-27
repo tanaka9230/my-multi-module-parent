@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 mvninstallfile() {
     LIB_FILE=lib/$2-$3.$4
