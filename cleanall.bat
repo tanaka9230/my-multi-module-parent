@@ -1,9 +1,14 @@
 @echo off
+setlocal
 
-rem - clean projects
+:: clean projects
 call mvn clean eclipse:clean
 
-rem - clean Eclipse's workspace settings
+:: clean myself
+del .project
+rd /S /Q .settings
+
+:: clean Eclipse's workspace settings
 set CURDIR=%cd%
 cd ..
 rd /S /Q .metadata
