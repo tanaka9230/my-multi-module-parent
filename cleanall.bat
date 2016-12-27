@@ -14,4 +14,3 @@ cd ..
 rd /S /Q .metadata
 rd /S /Q Servers
 cd %CURDIR%
-
